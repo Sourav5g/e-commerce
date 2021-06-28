@@ -1,0 +1,20 @@
+[
+    {
+        "_id": "1",
+        "name": "Shirt",
+        "price": "100",
+        "image": "assets/pages/img/products/model3.jpg"
+    },
+    {
+        "_id": "2",
+        "name": "Pant",
+        "price": "200",
+        "image": "assets/pages/img/products/model7.jpg"
+    },
+    {
+        "_id": "3",
+        "name": "Shirt",
+        "price": "300",
+        "image": "assets/pages/img/products/model2.jpg"
+    }
+]

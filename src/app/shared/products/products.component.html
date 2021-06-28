@@ -1,0 +1,37 @@
+<div class="header-navigation-content">
+    <div class="row" *ngFor="let product of productDetails; let i = index" [attr.data-index]="i">
+        <div class="col-md-3 col-sm-4 col-xs-6">
+            <div class="product-item">
+                <div class="pi-img-wrapper">
+                    <a href="shop-item.html"><img src="{{product.image}}"
+                            class="img-responsive" alt="Berry Lace Dress"></a>
+                </div>
+                <h3><a href="shop-item.html">{{product.name}}</a></h3>
+                <div class="pi-price">Rs. {{product.price}}</div>
+                <a href="javascript:;" class="btn btn-default add2cart" (click)="addToCart(product._id)">Add to cart</a>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-6">
+            <div class="product-item">
+                <div class="pi-img-wrapper">
+                    <a href="shop-item.html"><img src="{{product.image}}"
+                            class="img-responsive" alt="Berry Lace Dress"></a>
+                </div>
+                <h3><a href="shop-item.html">{{product.name}}</a></h3>
+                <div class="pi-price">Rs. {{product.price}}</div>
+                <a href="javascript:;" class="btn btn-default add2cart" (click)="addToCart(product._id)">Add to cart</a>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-6">
+            <div class="product-item">
+                <div class="pi-img-wrapper">
+                    <a href="shop-item.html"><img src="{{product.image}}"
+                            class="img-responsive" alt="Berry Lace Dress"></a>
+                </div>
+                <h3><a href="shop-item.html">{{product.name}}</a></h3>
+                <div class="pi-price">Rs. {{product.price}}</div>
+                <a href="javascript:;" class="btn btn-default add2cart" (click)="addToCart(product._id)">Add to cart</a>
+            </div>
+        </div>
+    </div>
+</div>

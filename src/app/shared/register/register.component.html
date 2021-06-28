@@ -1,0 +1,40 @@
+<form [formGroup]="registerData">
+    <mat-card>
+        <mat-card-title>Registration</mat-card-title>
+        <div class="form-group">
+            <mat-form-field class="example-full-width">
+                <mat-label>Username</mat-label>
+                <input formControlName="first_name" matInput placeholder="Enter Name">
+            </mat-form-field>
+            <div *ngIf="f.first_name.touched && f.first_name.invalid ">
+                <span class="text-dange" *ngIf="f.first_name"> name is required .
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="example-full-width">
+                <mat-label>password</mat-label>
+                <input formControlName="password" matInput placeholder="Enter password">
+            </mat-form-field>
+            <div *ngIf="f.password.touched && f.password.invalid ">
+                <span class="text-dange" *ngIf="f.password"> Password is required .
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="example-full-width">
+                <mat-label>email</mat-label>
+                <input formControlName="email" matInput placeholder="Enter email">
+            </mat-form-field>
+            <div *ngIf="f.password.touched && f.password.invalid ">
+                <span class="text-dange" *ngIf="f.password"> email is required .
+                </span>
+            </div>
+        </div>
+        <div>
+            <button mat-raised-button color="primary" [disabled]="!registerData.valid" (click)="submit()">submit</button>
+        </div>
+    </mat-card>
+
+</form>
+<button mat-button mat-dialog-close color="primary" (click)="closeMe()">close</button>
