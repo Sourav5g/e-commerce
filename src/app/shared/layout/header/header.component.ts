@@ -14,7 +14,6 @@ export class HeaderComponent implements OnInit {
 
   cartDetails: any
   userDetails: any
-  count!: number;
   constructor(
     public dialog: MatDialog,
     private router: Router,
@@ -61,7 +60,6 @@ export class HeaderComponent implements OnInit {
 
   userLogout() {
     localStorage.removeItem('user');
-
     this.CommonService.setData(null);
     // window.location.href = '';
   }
@@ -70,6 +68,13 @@ export class HeaderComponent implements OnInit {
   removeFromCart(index: number) {
     this.CommonService._removeFromCart(index)
     this.cartDetails = this.CommonService._getCartDataFrmLocalStorage();
+    //console.log(this.cartDetails)
+    this.CommonService._setCartData(this.cartDetails)
+  }
+
+  getId(id:any){
+    this.router.navigate(['product-details/',id]);
+    //console.log(id)
   }
 
 }

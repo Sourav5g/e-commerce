@@ -21,8 +21,10 @@ export class CommonService {
 
   _setCartData(data:any){
     this.cartData.next(data)
+    //localStorage.setItem("cartDetails", JSON.stringify(data));  
+    //console.log(data)
   }
-
+    // GET CART DATA FROM OBSERVABLE //
   _getCartData(){
     return this.cartData.asObservable();
   }
@@ -36,11 +38,12 @@ export class CommonService {
     localStorage.setItem('cartDetails', JSON.stringify(this.myCartData));
   }
 
-   // GET CART DATA //
+   // GET CART DATA FROM LOCAL STORAGE //
    _getCartDataFrmLocalStorage() {
      let data:any
      data = localStorage.getItem("cartDetails")
      data = JSON.parse(data)
      return data ;
   }
+
 }

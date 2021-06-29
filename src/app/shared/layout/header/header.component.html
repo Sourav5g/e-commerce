@@ -1,4 +1,5 @@
 <!-- BEGIN TOP BAR -->
+<!-- BEFORE LOGIN -->
 <div *ngIf="!userDetails; else elseBlock">
 <div class="pre-header">
     <div class="container">
@@ -56,17 +57,17 @@
         <!-- BEGIN CART -->
         <div class="top-cart-block">
             <div class="top-cart-info">
-                <a href="javascript:void(0);" class="top-cart-info-count">3 items</a>
-                <a href="javascript:void(0);" class="top-cart-info-value">$1260</a>
+                <a href="javascript:void(0);" class="top-cart-info-count">{{cartDetails.length}} items</a>
+                <!-- <a href="javascript:void(0);" class="top-cart-info-value">$1260</a> -->
             </div>
             <i class="fa fa-shopping-cart"></i>
 
             <div class="top-cart-content-wrapper">
                 <div class="top-cart-content">
                     <ul class="scroller" style="height: 250px;">
-                        <li *ngFor="let item of cartDetails;index as i;">
-                            <a href="shop-item.html"><img src="{{cartDetails[i].image}}" alt="Rolex Classic Watch"
-                                    width="37" height="34"></a>
+                        <li *ngFor="let item of cartDetails;index as i;" (click)="getId(cartDetails[i]._id)">
+                            <img src="{{cartDetails[i].image}}" alt="Rolex Classic Watch"
+                                    width="37" height="34">
                             <!-- <span class="cart-content-count">x 1</span> -->
                             <strong>{{cartDetails[i].name}}</strong>
                             <em>Rs. {{cartDetails[i].price}}</em>
@@ -200,17 +201,17 @@
             <!-- BEGIN CART -->
             <div class="top-cart-block">
                 <div class="top-cart-info">
-                    <a href="javascript:void(0);" class="top-cart-info-count">3 items</a>
-                    <a href="javascript:void(0);" class="top-cart-info-value">$1260</a>
+                    <a href="javascript:void(0);" class="top-cart-info-count">{{cartDetails.length}} items</a>
+                    <!-- <a href="javascript:void(0);" class="top-cart-info-value">$1260</a> -->
                 </div>
                 <i class="fa fa-shopping-cart"></i>
     
                 <div class="top-cart-content-wrapper">
                     <div class="top-cart-content">
                         <ul class="scroller" style="height: 250px;">
-                            <li *ngFor="let item of cartDetails;index as i;">
-                                <a href="shop-item.html"><img src="{{cartDetails[i].image}}" alt="Rolex Classic Watch"
-                                        width="37" height="34"></a>
+                            <li *ngFor="let item of cartDetails;index as i;" (click)="getId(cartDetails[i]._id)">
+                                <img src="{{cartDetails[i].image}}" alt="Rolex Classic Watch"
+                                        width="37" height="34" >
                                 <!-- <span class="cart-content-count">x 1</span> -->
                                 <strong>{{cartDetails[i].name}}</strong>
                                 <em>Rs. {{cartDetails[i].price}}</em>
