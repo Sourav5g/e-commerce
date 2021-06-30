@@ -1,149 +1,143 @@
 <!-- BEGIN TOP BAR -->
 <!-- BEFORE LOGIN -->
 <div *ngIf="!userDetails; else elseBlock">
-<div class="pre-header">
-    <div class="container">
-        <div class="row">
-            <!-- BEGIN TOP BAR LEFT PART -->
-            <div class="col-md-6 col-sm-6 additional-shop-info">
-                <ul class="list-unstyled list-inline">
-                    <li><i class="fa fa-phone"></i><span>+1 456 6717</span></li>
-                    <!-- BEGIN CURRENCIES -->
-                    <li class="shop-currencies">
-                        <a href="javascript:void(0);">€</a>
-                        <a href="javascript:void(0);">£</a>
-                        <a href="javascript:void(0);" class="current">$</a>
-                    </li>
-                    <!-- END CURRENCIES -->
-                    <!-- BEGIN LANGS -->
-                    <li class="langs-block">
-                        <a href="javascript:void(0);" class="current">English </a>
-                        <div class="langs-block-others-wrapper">
-                            <div class="langs-block-others">
-                                <a href="javascript:void(0);">French</a>
-                                <a href="javascript:void(0);">Germany</a>
-                                <a href="javascript:void(0);">Turkish</a>
+    <div class="pre-header">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN TOP BAR LEFT PART -->
+                <div class="col-md-6 col-sm-6 additional-shop-info">
+                    <ul class="list-unstyled list-inline">
+                        <li><i class="fa fa-phone"></i><span>+1 456 6717</span></li>
+                        <!-- BEGIN CURRENCIES -->
+                        <li class="shop-currencies">
+                            <a href="javascript:void(0);">€</a>
+                            <a href="javascript:void(0);">£</a>
+                            <a href="javascript:void(0);" class="current">$</a>
+                        </li>
+                        <!-- END CURRENCIES -->
+                        <!-- BEGIN LANGS -->
+                        <li class="langs-block">
+                            <a href="javascript:void(0);" class="current">English </a>
+                            <div class="langs-block-others-wrapper">
+                                <div class="langs-block-others">
+                                    <a href="javascript:void(0);">French</a>
+                                    <a href="javascript:void(0);">Germany</a>
+                                    <a href="javascript:void(0);">Turkish</a>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <!-- END LANGS -->
-                </ul>
+                        </li>
+                        <!-- END LANGS -->
+                    </ul>
+                </div>
+                <!-- END TOP BAR LEFT PART -->
+                <!-- BEGIN TOP BAR MENU -->
+                <div class="col-md-6 col-sm-6 additional-nav">
+                    <ul class="list-unstyled list-inline pull-right">
+                        <li><a href="shop-account.html">My Account</a></li>
+                        <li><a href="shop-wishlist.html">My Wishlist</a></li>
+                        <li><a (click)="userRegister()">Register</a></li>
+                        <li><a (click)="userLogin()">Log In</a></li>
+                    </ul>
+                </div>
+                <!-- END TOP BAR MENU -->
             </div>
-            <!-- END TOP BAR LEFT PART -->
-            <!-- BEGIN TOP BAR MENU -->
-            <div class="col-md-6 col-sm-6 additional-nav">
-                <ul class="list-unstyled list-inline pull-right">
-                    <li><a href="shop-account.html">My Account</a></li>
-                    <li><a href="shop-wishlist.html">My Wishlist</a></li>
-                    <li><a (click)="userRegister()">Register</a></li>
-                    <li><a (click)="userLogin()">Log In</a></li>
-                </ul>
-            </div>
-            <!-- END TOP BAR MENU -->
         </div>
     </div>
-</div>
-<!-- END TOP BAR -->
-<!-- Head END -->
+    <!-- END TOP BAR -->
+    <!-- Head END -->
 
-<!-- BEGIN HEADER -->
-<div class="header">
-    <div class="container">
-        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/logo-shop-red.png"
-                alt="Metronic Shop UI"></a>
+    <!-- BEGIN HEADER -->
+    <div class="header">
+        <div class="container">
+            <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/logo-shop-red.png"
+                    alt="Metronic Shop UI"></a>
 
-        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+            <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
-        <!-- BEGIN CART -->
-        <div class="top-cart-block">
-            <div class="top-cart-info">
-                <a href="javascript:void(0);" class="top-cart-info-count">{{cartDetails.length}} items</a>
-                <!-- <a href="javascript:void(0);" class="top-cart-info-value">$1260</a> -->
-            </div>
-            <i class="fa fa-shopping-cart"></i>
+            <!-- BEGIN CART -->
+            <div class="top-cart-block">
+                <div class="top-cart-info">
+                    <a href="javascript:void(0);" class="top-cart-info-count">{{cartDetails.length}} items</a>
+                    <!-- <a href="javascript:void(0);" class="top-cart-info-value">$1260</a> -->
+                </div>
+                <i class="fa fa-shopping-cart"></i>
 
-            <div class="top-cart-content-wrapper">
-                <div class="top-cart-content">
-                    <ul class="scroller" style="height: 250px;">
-                        <li *ngFor="let item of cartDetails;index as i;" (click)="getId(cartDetails[i]._id)">
-                            <img src="{{cartDetails[i].image}}" alt="Rolex Classic Watch"
-                                    width="37" height="34">
-                            <!-- <span class="cart-content-count">x 1</span> -->
-                            <strong>{{cartDetails[i].name}}</strong>
-                            <em>Rs. {{cartDetails[i].price}}</em>
-                            <a (click)="removeFromCart(i)" class="del-goods">&nbsp;</a>
-                        </li>
-                        
-                    </ul>
-                    <div class="text-right">
-                        <a class="btn btn-default" (click)="routeTo('cart')">View Cart</a>
-                        <a href="shop-checkout.html" class="btn btn-primary">Checkout</a>
+                <div class="top-cart-content-wrapper">
+                    <div class="top-cart-content">
+                        <ul class="scroller" style="height: 250px;">
+                            <li *ngFor="let item of cartDetails;index as i;" (click)="getId(cartDetails[i]._id)">
+                                <img src="{{cartDetails[i].image}}" alt="Rolex Classic Watch" width="37" height="34">
+                                <!-- <span class="cart-content-count">x 1</span> -->
+                                <strong>{{cartDetails[i].name}}</strong>
+                                <em>Rs. {{cartDetails[i].price}}</em>
+                                <a (click)="removeFromCart(i)" class="del-goods">&nbsp;</a>
+                            </li>
+
+                        </ul>
+                        <div class="text-right">
+                            <a class="btn btn-default" (click)="routeTo('cart')">View Cart</a>
+                            <a class="btn btn-primary" (click)="userLogin()">Checkout</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--END CART -->
+            <!--END CART -->
 
-        <!-- BEGIN NAVIGATION -->
-        <div class="header-navigation">
-            <ul>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" (click)="routeTo('')">
-                        Home
+            <!-- BEGIN NAVIGATION -->
+            <div class="header-navigation">
+                <ul>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" (click)="routeTo('')">
+                            Home
 
-                    </a>
-                </li>
-                <li class="dropdown dropdown-megamenu">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                        Man
+                        </a>
+                    </li>
+                    <li class="dropdown dropdown-megamenu">
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                            Man
 
-                    </a>
-                   
-                </li>
-                <li><a href="shop-item.html">Kids</a></li>
-                <li class="dropdown dropdown100 nav-catalogue">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                        New
+                        </a>
 
-                    </a>
-                   
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                        Pages
+                    </li>
+                    <li><a href="shop-item.html">Kids</a></li>
+                    <li class="dropdown dropdown100 nav-catalogue">
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                            New
 
-                    </a>
-                </li>
+                        </a>
+
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                            Pages
+
+                        </a>
+                    </li>
 
 
-                <li><a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes&amp;utm_source=download&amp;utm_medium=banner&amp;utm_campaign=metronic_frontend_freebie"
-                        target="_blank">Admin theme</a></li>
+                    <li><a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes&amp;utm_source=download&amp;utm_medium=banner&amp;utm_campaign=metronic_frontend_freebie"
+                            target="_blank">Admin theme</a></li>
 
-                <!-- BEGIN TOP SEARCH -->
-                <li class="menu-search">
-                    <span class="sep"></span>
-                    <i class="fa fa-search search-btn"></i>
-                    <div class="search-box">
-                        <form action="#">
-                            <div class="input-group">
-                                <input type="text" placeholder="Search" class="form-control">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-primary" type="submit">Search</button>
-                                </span>
+                    <!-- BEGIN TOP SEARCH -->
+                    <li class="menu-search">
+                        <div class="form-group row">
+                            <!-- <label for="search" class="col-sm-2 col-form-label" >search</label> -->
+                            <div class="col-sm-6">
+                                <input name="search" class="form-control"  type="text"
+                                    placeholder="Search" autocomplete="off" (keypress)="search($event)">
                             </div>
-                        </form>
-                    </div>
-                </li>
-                <!-- END TOP SEARCH -->
-            </ul>
+                        </div>
+                    </li>
+                    <!-- END TOP SEARCH -->
+                </ul>
+            </div>
+            <!-- END NAVIGATION -->
         </div>
-        <!-- END NAVIGATION -->
     </div>
-</div>
 </div>
 <!-- Header END -->
 
-<!-- BEGIN TOP BAR -->
+<!-- BEGIN TOP AFTER LOGIN BAR -->
 <ng-template #elseBlock>
     <div class="pre-header">
         <div class="container">
@@ -189,15 +183,15 @@
     </div>
     <!-- END TOP BAR -->
     <!-- Head END -->
-    
+
     <!-- BEGIN HEADER -->
     <div class="header">
         <div class="container">
             <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/logo-shop-red.png"
                     alt="Metronic Shop UI"></a>
-    
+
             <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
-    
+
             <!-- BEGIN CART -->
             <div class="top-cart-block">
                 <div class="top-cart-info">
@@ -205,13 +199,12 @@
                     <!-- <a href="javascript:void(0);" class="top-cart-info-value">$1260</a> -->
                 </div>
                 <i class="fa fa-shopping-cart"></i>
-    
+
                 <div class="top-cart-content-wrapper">
                     <div class="top-cart-content">
                         <ul class="scroller" style="height: 250px;">
                             <li *ngFor="let item of cartDetails;index as i;" (click)="getId(cartDetails[i]._id)">
-                                <img src="{{cartDetails[i].image}}" alt="Rolex Classic Watch"
-                                        width="37" height="34" >
+                                <img src="{{cartDetails[i].image}}" alt="Rolex Classic Watch" width="37" height="34">
                                 <!-- <span class="cart-content-count">x 1</span> -->
                                 <strong>{{cartDetails[i].name}}</strong>
                                 <em>Rs. {{cartDetails[i].price}}</em>
@@ -220,56 +213,51 @@
                         </ul>
                         <div class="text-right">
                             <a class="btn btn-default" (click)="routeTo('cart')">View Cart</a>
-                            <a href="shop-checkout.html" class="btn btn-primary">Checkout</a>
+                            <a  class="btn btn-primary" (click)="routeTo('home/checkout')">Checkout</a>
                         </div>
                     </div>
                 </div>
             </div>
             <!--END CART -->
-    
+
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation">
                 <ul>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" (click)="routeTo('')">
                             Home
-    
+
                         </a>
                     </li>
                     <li class="dropdown dropdown-megamenu">
                         <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
                             Man
-    
+
                         </a>
-                        
+
                     </li>
                     <li><a href="shop-item.html">Kids</a></li>
                     <li class="dropdown dropdown100 nav-catalogue">
                         <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
                             New
-    
+
                         </a>
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
                             Pages
-    
+
                         </a>
                     </li>
-    
+
                     <!-- BEGIN TOP SEARCH -->
                     <li class="menu-search">
-                        <span class="sep"></span>
-                        <i class="fa fa-search search-btn"></i>
-                        <div class="search-box">
-                            <form action="#">
-                                <div class="input-group">
-                                    <input type="text" placeholder="Search" class="form-control">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-primary" type="submit">Search</button>
-                                    </span>
-                                </div>
-                            </form>
+                        <div class="form-group row">
+                            <!-- <label for="search" class="col-sm-2 col-form-label" >search</label> -->
+                            <div class="col-sm-6">
+                                <input name="search" class="form-control"  type="text"
+                                    placeholder="Search" autocomplete="off" (keypress)="search($event)">
+                            </div>
                         </div>
                     </li>
                     <!-- END TOP SEARCH -->
@@ -279,4 +267,4 @@
         </div>
     </div>
 </ng-template>
-    <!-- Header END -->
+<!-- Header END -->

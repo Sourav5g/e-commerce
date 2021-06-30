@@ -8,15 +8,26 @@ export class CommonService {
   private myCartData:any
   private authData : BehaviorSubject<any> = new BehaviorSubject(null);
   private cartData : BehaviorSubject<any> = new BehaviorSubject(null);
+  private searchData : BehaviorSubject<any> = new BehaviorSubject(null);
+
 
   constructor() { }
-
+  //AUTH DATA SET AS OBSERVABLE
   setData(data: any) {
     this.authData.next(data);
   }
 
   getData() {
     return this.authData.asObservable();
+  }
+
+  //SEARCG DATA SET AS OBSERVABLE
+  setSearchData(data: any) {
+    this.searchData.next(data);
+  }
+
+  getSearchData() {
+    return this.searchData.asObservable();
   }
 
   _setCartData(data:any){

@@ -14,6 +14,9 @@ export class HeaderComponent implements OnInit {
 
   cartDetails: any
   userDetails: any
+  public searchFilter: any = '';
+  query!: string;
+
   constructor(
     public dialog: MatDialog,
     private router: Router,
@@ -71,10 +74,14 @@ export class HeaderComponent implements OnInit {
     //console.log(this.cartDetails)
     this.CommonService._setCartData(this.cartDetails)
   }
-
+  //ROUTE TO PRODUCT DETAILS PAGE
   getId(id:any){
     this.router.navigate(['product-details/',id]);
     //console.log(id)
+  }
+  search(event:any){
+    //console.log(event.target.value)
+    this.CommonService.setSearchData(event.target.value)
   }
 
 }
