@@ -12,7 +12,7 @@ import { RegisterComponent } from '../../register/register.component';
 })
 export class HeaderComponent implements OnInit {
 
-  cartDetails: any
+  cartDetails: any =[]
   userDetails: any
   public searchFilter: any = '';
   query!: string;
@@ -36,7 +36,9 @@ export class HeaderComponent implements OnInit {
     this.cartDetails = JSON.parse(this.cartDetails)
     this.CommonService._setCartData(this.cartDetails)
     this.CommonService._getCartData().subscribe((data: any) => {
+      if(data){
       this.cartDetails = data;
+      }
       //console.log(this.cartDetails)
     })
   }

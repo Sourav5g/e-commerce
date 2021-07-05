@@ -15,6 +15,7 @@ export class DataService {
     private firestore: AngularFirestore
   ) { }
 
+  //ADDING REGISTER DATA  IN DATABASE USER
   addData(userData: any) {
     return this.firestore.collection('users').add(userData);
   }
@@ -25,5 +26,15 @@ export class DataService {
 
   getProducts(): Observable<products[]> {
     return this.http.get<products[]>(this.userUrl)
+  }
+
+  //ADDING CART DATA IN ORDER HISTORY
+  addCartData(cartData:any) {
+    //console.log(cartData)
+    return this.firestore.collection('orderHistory').add(cartData);
+  }
+
+  getCartData() {
+    return this.firestore.collection('orderHistory').snapshotChanges();
   }
 }

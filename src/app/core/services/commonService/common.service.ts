@@ -5,10 +5,10 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
   providedIn: 'root'
 })
 export class CommonService {
-  private myCartData:any
-  private authData : BehaviorSubject<any> = new BehaviorSubject(null);
-  private cartData : BehaviorSubject<any> = new BehaviorSubject(null);
-  private searchData : BehaviorSubject<any> = new BehaviorSubject(null);
+  private myCartData: any
+  private authData: BehaviorSubject<any> = new BehaviorSubject(null);
+  private cartData: BehaviorSubject<any> = new BehaviorSubject(null);
+  private searchData: BehaviorSubject<any> = new BehaviorSubject(null);
 
 
   constructor() { }
@@ -30,31 +30,32 @@ export class CommonService {
     return this.searchData.asObservable();
   }
 
-  _setCartData(data:any){
+  _setCartData(data: any) {
     this.cartData.next(data)
-    //localStorage.setItem("cartDetails", JSON.stringify(data));  
-    //console.log(data)
   }
-    // GET CART DATA FROM OBSERVABLE //
-  _getCartData(){
+  _clearCartData() {
+    this.cartData.next('');
+  }
+  // GET CART DATA FROM OBSERVABLE //
+  _getCartData() {
     return this.cartData.asObservable();
   }
 
   //REMOVE FROM CART //
-  _removeFromCart(index:any): void {
-    
+  _removeFromCart(index: any): void {
+
     this.myCartData = localStorage.getItem("cartDetails")
     this.myCartData = JSON.parse(this.myCartData)
     this.myCartData.splice(index, 1);
     localStorage.setItem('cartDetails', JSON.stringify(this.myCartData));
   }
 
-   // GET CART DATA FROM LOCAL STORAGE //
-   _getCartDataFrmLocalStorage() {
-     let data:any
-     data = localStorage.getItem("cartDetails")
-     data = JSON.parse(data)
-     return data ;
+  // GET CART DATA FROM LOCAL STORAGE //
+  _getCartDataFrmLocalStorage() {
+    let data: any
+    data = localStorage.getItem("cartDetails")
+    data = JSON.parse(data)
+    return data;
   }
 
 }

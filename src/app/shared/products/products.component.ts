@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonService } from 'src/app/core/services/commonService/common.service';
 import { DataService } from 'src/app/core/services/dataService/data.service';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-products',
@@ -19,7 +20,8 @@ export class ProductsComponent implements OnInit {
     private dataService: DataService,
     private commonService: CommonService,
     private router: Router,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.dataService.getProducts().subscribe((data: any) => {
@@ -27,8 +29,11 @@ export class ProductsComponent implements OnInit {
       // console.log(this.productDetails)
       this.search();
     })
+    
     this.commonService._getCartData().subscribe((data: any) => {
+      if(data){
       this.cartData = data;
+      }
       //console.log(this.cartData)
     })
 
@@ -37,10 +42,12 @@ export class ProductsComponent implements OnInit {
   // ADD PRODUCTS TO CART //
   addToCart(id: any) {
     let cart = this.productDetails.find((item: any) => item._id === id);
+    // console.log(cart)
+    // console.log(this.cartData)
     this.cartData.push(cart);
     localStorage.setItem("cartDetails", JSON.stringify(this.cartData));
     this.commonService._setCartData(this.cartData)
-    console.log(this.cartData)
+    //console.log(this.cartData)
   }
 
   //ROUTE TO THE PRODUCT DETAIL PAGE //
@@ -49,15 +56,18 @@ export class ProductsComponent implements OnInit {
   }
 
   search() {
-    this.commonService.getSearchData().subscribe((data: any) => {
-      this.searchData = data;
-      if (this.searchData) {             
-        this.searchItem = this.productDetails.filter((item: any) => {
-          return item.name.toLowerCase().includes(this.searchData.toLowerCase())          
-        });
-        console.log(this.searchItem)
-      }
-    })
+    this.commonService.getSearchData().pipe(
+      debounceTime(2000)).subscribe((data: any) => {
+        this.searchData = data;
+        if (this.searchData) {
+          this.searchItem = this.productDetails.filter((item: any) => {
+            return item.name.toLowerCase().includes(this.searchData.toLowerCase())
+          });
+          console.log(this.searchItem)
+        }
+      })
   }
 
 }
+
+

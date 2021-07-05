@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonService } from 'src/app/core/services/commonService/common.service';
 
 @Component({
@@ -9,10 +10,14 @@ import { CommonService } from 'src/app/core/services/commonService/common.servic
 export class CartComponent implements OnInit {
 
   cartDetails: any
-  unitTotal = 0
+  unitTotal: any = []
   subTotal = 0
+  public calculatePrice: any;
 
-  constructor(public CommonService: CommonService) { }
+  constructor(
+    public CommonService: CommonService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
     this.cartDetails = localStorage.getItem("cartDetails");
@@ -34,16 +39,22 @@ export class CartComponent implements OnInit {
   }
 
   caculateProductPrice(event: any, data: any, index: any) {
-    let calculatePrice: any
+   
     // console.log(event.target.value)
-    //console.log(data)
-    // console.log(index)
-    //console.log(this.cartDetails[index].price )
-    calculatePrice = this.cartDetails[index].price * event.target.value
-    // console.log(calculatePrice )
-    this.unitTotal = this.unitTotal + calculatePrice
-    console.log(this.unitTotal)
+    // // console.log(data)
+    // // console.log(index)
+    // if (event.target.value) {
+    //   //calculatePrice = 0
+    //   this.calculatePrice = this.cartDetails[index].price * event.target.value
+    //   //this.cartDetails[index].price = calculatePrice
+    //   console.log(this.calculatePrice)
+    // }
+    // console.log(this.cartDetails[index].price)
 
+    // this.subTotal = 0
+    // for (let i = 0; i < this.cartDetails.length; i++) {
+    //   this.subTotal += JSON.parse(this.cartDetails[i].price)
+    // }
   }
 
   calculateTotalPrice() {
@@ -53,6 +64,10 @@ export class CartComponent implements OnInit {
       this.subTotal += JSON.parse(this.cartDetails[i].price)
     }
     //console.log(this.subTotal)
+  }
+
+  routeTo(routeName: any) {
+    this.router.navigate([routeName]);
   }
 
 }

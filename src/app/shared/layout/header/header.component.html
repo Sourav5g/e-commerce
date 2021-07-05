@@ -55,10 +55,9 @@
             <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
             <!-- BEGIN CART -->
-            <div class="top-cart-block">
+            <div class="top-cart-block" *ngIf ="cartDetails">
                 <div class="top-cart-info">
                     <a href="javascript:void(0);" class="top-cart-info-count">{{cartDetails.length}} items</a>
-                    <!-- <a href="javascript:void(0);" class="top-cart-info-value">$1260</a> -->
                 </div>
                 <i class="fa fa-shopping-cart"></i>
 
@@ -67,7 +66,7 @@
                         <ul class="scroller" style="height: 250px;">
                             <li *ngFor="let item of cartDetails;index as i;" (click)="getId(cartDetails[i]._id)">
                                 <img src="{{cartDetails[i].image}}" alt="Rolex Classic Watch" width="37" height="34">
-                                <!-- <span class="cart-content-count">x 1</span> -->
+                                <span class="cart-content-count">x 1</span>
                                 <strong>{{cartDetails[i].name}}</strong>
                                 <em>Rs. {{cartDetails[i].price}}</em>
                                 <a (click)="removeFromCart(i)" class="del-goods">&nbsp;</a>
@@ -93,16 +92,15 @@
                         </a>
                     </li>
                     <li class="dropdown dropdown-megamenu">
-                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                            Man
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            MEN
 
                         </a>
 
                     </li>
-                    <li><a href="shop-item.html">Kids</a></li>
                     <li class="dropdown dropdown100 nav-catalogue">
-                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                            New
+                        <a class="dropdown-toggle" data-toggle="dropdown" (click)="routeTo('cart')">
+                            My Cart
 
                         </a>
 
@@ -124,7 +122,7 @@
                             <!-- <label for="search" class="col-sm-2 col-form-label" >search</label> -->
                             <div class="col-sm-6">
                                 <input name="search" class="form-control"  type="text"
-                                    placeholder="Search" autocomplete="off" (keypress)="search($event)">
+                                    placeholder="Search" autocomplete="off" (keyup)="search($event)">
                             </div>
                         </div>
                     </li>
@@ -193,19 +191,17 @@
             <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
             <!-- BEGIN CART -->
-            <div class="top-cart-block">
+            <div class="top-cart-block" *ngIf ="cartDetails" >
                 <div class="top-cart-info">
                     <a href="javascript:void(0);" class="top-cart-info-count">{{cartDetails.length}} items</a>
-                    <!-- <a href="javascript:void(0);" class="top-cart-info-value">$1260</a> -->
                 </div>
                 <i class="fa fa-shopping-cart"></i>
 
-                <div class="top-cart-content-wrapper">
+                <div class="top-cart-content-wrapper" >
                     <div class="top-cart-content">
                         <ul class="scroller" style="height: 250px;">
                             <li *ngFor="let item of cartDetails;index as i;" (click)="getId(cartDetails[i]._id)">
                                 <img src="{{cartDetails[i].image}}" alt="Rolex Classic Watch" width="37" height="34">
-                                <!-- <span class="cart-content-count">x 1</span> -->
                                 <strong>{{cartDetails[i].name}}</strong>
                                 <em>Rs. {{cartDetails[i].price}}</em>
                                 <a (click)="removeFromCart(i)" class="del-goods">&nbsp;</a>
@@ -230,16 +226,16 @@
                         </a>
                     </li>
                     <li class="dropdown dropdown-megamenu">
-                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                            Man
+                        <a class="dropdown-toggle" data-toggle="dropdown" (click)="routeTo('home/order-history')">
+                            Order History
 
                         </a>
 
                     </li>
                     <li><a href="shop-item.html">Kids</a></li>
                     <li class="dropdown dropdown100 nav-catalogue">
-                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                            New
+                        <a class="dropdown-toggle" data-toggle="dropdown" (click)="routeTo('cart')">
+                            My Cart
 
                         </a>
                     </li>
@@ -256,7 +252,7 @@
                             <!-- <label for="search" class="col-sm-2 col-form-label" >search</label> -->
                             <div class="col-sm-6">
                                 <input name="search" class="form-control"  type="text"
-                                    placeholder="Search" autocomplete="off" (keypress)="search($event)">
+                                    placeholder="Search" autocomplete="off" (keyup)="search($event)">
                             </div>
                         </div>
                     </li>

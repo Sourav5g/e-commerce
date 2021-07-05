@@ -1,1 +1,84 @@
 <app-header></app-header>
+<!-- BEGIN SIDEBAR & CONTENT -->
+<div class="row margin-bottom-40">
+    <!-- BEGIN CONTENT -->
+    <div class="col-md-12 col-sm-12">
+        <h1>Checkout</h1>
+        <!-- BEGIN CHECKOUT PAGE -->
+        <div class="panel-group checkout-page accordion scrollable" id="checkout-page">
+
+            <!-- BEGIN CHECKOUT -->
+            <div id="checkout" class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#checkout-page" 
+                            class="accordion-toggle">
+                             Payment Options
+                        </a>
+                    </h2>
+                </div>
+                <div id="checkout-content" class="panel-collapse collapse in">
+                    <div class="panel-body row">
+                        <div class="col-md-6 col-sm-6">
+                            <h3>New Customer</h3>
+                            <p>Payment Options:</p>
+                            <div class="radio-list">
+                                <label>
+                                    <input type="radio" name="account" value="register"> Cash On Delivery
+                                </label>
+                                <label>
+                                    <input type="radio" name="account" value="guest"> Debit Card / Credit Card
+                                </label>
+                                <label>
+                                    <input type="radio" name="account" value="guest"> Net Banking
+                                </label>
+                            </div>
+                            <p>By creating an account you will be able to shop faster, be up to date on an order's
+                                status, and keep track of the orders you have previously made.</p>
+                            <button class="btn btn-primary" type="submit" data-toggle="collapse"
+                                data-parent="#checkout-page" data-target="#payment-address-content" (click)="routeTo('home/successful')" (click)="submit()"> Confirm Payment</button>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <!-- END CHECKOUT -->          
+        </div>
+        <!-- END CHECKOUT PAGE -->
+    </div>
+    <!-- END CONTENT -->
+</div>
+<!-- END SIDEBAR & CONTENT -->
+
+
+<!-- BEGIN STEPS -->
+<div class="steps-block steps-block-red">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 steps-block-col">
+                <i class="fa fa-truck"></i>
+                <div>
+                    <h2>Free shipping</h2>
+                    <em>Express delivery withing 3 days</em>
+                </div>
+                <span>&nbsp;</span>
+            </div>
+            <div class="col-md-4 steps-block-col">
+                <i class="fa fa-gift"></i>
+                <div>
+                    <h2>Daily Gifts</h2>
+                    <em>3 Gifts daily for lucky customers</em>
+                </div>
+                <span>&nbsp;</span>
+            </div>
+            <div class="col-md-4 steps-block-col">
+                <i class="fa fa-phone"></i>
+                <div>
+                    <h2>477 505 8877</h2>
+                    <em>24/7 customer care available</em>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END STEPS -->
