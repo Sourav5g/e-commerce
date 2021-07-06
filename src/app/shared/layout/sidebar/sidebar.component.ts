@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from 'src/app/core/services/commonService/common.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private CommonService: CommonService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  priceRangeFilter(event:any){
+    //console.log(event.value)
+    this.CommonService.setFilterPrice(event.value)
   }
 
 }

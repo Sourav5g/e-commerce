@@ -1,1 +1,14 @@
-<p>sidebar works!</p>
+<!-- BEGIN SIDEBAR -->
+<div class="sidebar col-md-3 col-sm-4">
+    <ul class="list-group margin-bottom-25 sidebar-menu">
+        <li class="list-group-item clearfix">
+            <h2>Price range</h2>
+            <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="0" (change)="priceRangeFilter($event)">All</mat-radio-button><br><br>
+                <mat-radio-button value="1" (change)="priceRangeFilter($event)">Rs 0-99</mat-radio-button><br><br>
+                <mat-radio-button value="2" (change)="priceRangeFilter($event)">Rs 100-199</mat-radio-button><br><br>
+                <mat-radio-button value="3" (change)="priceRangeFilter($event)">Rs 199-300</mat-radio-button>
+            </mat-radio-group> <br>
+    </ul>
+</div>
+<!-- END SIDEBAR -->

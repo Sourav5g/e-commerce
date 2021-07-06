@@ -9,6 +9,7 @@ export class CommonService {
   private authData: BehaviorSubject<any> = new BehaviorSubject(null);
   private cartData: BehaviorSubject<any> = new BehaviorSubject(null);
   private searchData: BehaviorSubject<any> = new BehaviorSubject(null);
+  private filterPrice: BehaviorSubject<any> = new BehaviorSubject(null);
 
 
   constructor() { }
@@ -21,7 +22,16 @@ export class CommonService {
     return this.authData.asObservable();
   }
 
-  //SEARCG DATA SET AS OBSERVABLE
+  //SET FILTER PRICE VALUR RANGE
+  setFilterPrice(data: any) {
+    this.filterPrice.next(data);
+  }
+
+  getFilterPrice() {
+    return this.filterPrice.asObservable();
+  }
+
+  //SEARCH DATA SET AS OBSERVABLE
   setSearchData(data: any) {
     this.searchData.next(data);
   }

@@ -15,6 +15,8 @@ export class ProductsComponent implements OnInit {
   selectedCartData: any
   searchData: any
   searchItem: any
+  filterValue!: number;
+  filterValueData: any
 
   constructor(
     private dataService: DataService,
@@ -28,11 +30,12 @@ export class ProductsComponent implements OnInit {
       this.productDetails = data;
       // console.log(this.productDetails)
       this.search();
+      this.filterPrice();
     })
-    
+
     this.commonService._getCartData().subscribe((data: any) => {
-      if(data){
-      this.cartData = data;
+      if (data) {
+        this.cartData = data;
       }
       //console.log(this.cartData)
     })
@@ -66,6 +69,39 @@ export class ProductsComponent implements OnInit {
           //console.log(this.searchItem)
         }
       })
+  }
+
+  filterPrice() {
+    this.filterValueData = this.productDetails
+    this.commonService.getFilterPrice().subscribe((data: any) => {
+      this.filterValue = data;
+      // this.filterValueData = this.productDetails
+      if (data == 1) {
+        let lower = 0
+        let upper = 99
+        this.productDetails = this.filterValueData.filter((item: any) => {
+          return (item.price <= upper && item.price >= lower)
+        });
+      }
+      else if (data == 2) {
+        let lower = 100
+        let upper = 199
+        this.productDetails = this.filterValueData.filter((item: any) => {
+          return (item.price <= upper && item.price >= lower)
+        });
+      }
+      else if (data == 3) {
+        let lower = 200
+        let upper = 399
+        this.productDetails = this.filterValueData.filter((item: any) => {
+          return (item.price <= upper && item.price >= lower)
+        });
+      }
+      else{
+        this.productDetails = this.filterValueData
+      }
+      //console.log(this.filterValue)
+    })
   }
 
 }
