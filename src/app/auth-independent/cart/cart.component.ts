@@ -39,7 +39,7 @@ export class CartComponent implements OnInit {
   }
 
   caculateProductPrice(event: any, data: any, index: any) {
-   
+
     // console.log(event.target.value)
     // // console.log(data)
     // // console.log(index)
@@ -60,8 +60,10 @@ export class CartComponent implements OnInit {
   calculateTotalPrice() {
     // console.log(this.cartDetails.length)
     this.subTotal = 0
-    for (let i = 0; i < this.cartDetails.length; i++) {
-      this.subTotal += JSON.parse(this.cartDetails[i].price)
+    if (this.cartDetails) {
+      for (let i = 0; i < this.cartDetails.length; i++) {
+        this.subTotal += JSON.parse(this.cartDetails[i].price)
+      }
     }
     //console.log(this.subTotal)
   }

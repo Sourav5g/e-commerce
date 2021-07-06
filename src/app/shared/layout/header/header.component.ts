@@ -66,6 +66,7 @@ export class HeaderComponent implements OnInit {
   userLogout() {
     localStorage.removeItem('user');
     this.CommonService.setData(null);
+    this.routeTo('');
     // window.location.href = '';
   }
 

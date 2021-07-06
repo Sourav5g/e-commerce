@@ -31,7 +31,11 @@ export class DataService {
   //ADDING CART DATA IN ORDER HISTORY
   addCartData(cartData:any) {
     //console.log(cartData)
-    return this.firestore.collection('orderHistory').add(cartData);
+    const orderTime = {
+      data:cartData,
+			timeStamp: new Date().getTime()
+		};
+    return this.firestore.collection('orderHistory').add(orderTime);
   }
 
   getCartData() {

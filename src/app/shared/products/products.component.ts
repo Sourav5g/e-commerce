@@ -63,7 +63,7 @@ export class ProductsComponent implements OnInit {
           this.searchItem = this.productDetails.filter((item: any) => {
             return item.name.toLowerCase().includes(this.searchData.toLowerCase())
           });
-          console.log(this.searchItem)
+          //console.log(this.searchItem)
         }
       })
   }
