@@ -41,4 +41,19 @@ export class DataService {
   getCartData() {
     return this.firestore.collection('orderHistory').snapshotChanges();
   }
+
+  //ADD REVIEW DATAS
+  addReviewData(reviewData: any , _id:any) {
+    const reviewTime = {
+      data:reviewData,
+      id:_id,
+			timeStamp: new Date().getTime()
+		};
+    return this.firestore.collection('reviews').add(reviewTime);
+  }
+
+  getReviewData() {
+    return this.firestore.collection('reviews').snapshotChanges();
+  }
+
 }

@@ -32,7 +32,7 @@ export class OrderHistoryComponent implements OnInit {
         this.orderHistory = this.orderHistory.filter((item: any) => {
           return item.data.user.toLowerCase().includes(this.user.first_name.toLowerCase())
         });
-        console.log(this.orderHistory)
+        //console.log(this.orderHistory)
       }
     })
   }
