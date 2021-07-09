@@ -17,6 +17,10 @@ export class ProductDetailsComponent implements OnInit {
   cartData: any = []
   reviewFormData!: FormGroup;
   reviewData: any = []
+  islike: any = []
+  isdislike: any = []
+  likeCheck: any = [];
+  dislikeCheck: any = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -40,7 +44,13 @@ export class ProductDetailsComponent implements OnInit {
       })
       //console.log(this.reviewData)
       this.findReiview();
-
+      //ASSIGNING LIKE ARRAY WITH 0
+      for (let i = 0; i < this.reviewData.length; i++) {
+        this.islike[i] = 0
+        this.isdislike[i] = 0
+        this.likeCheck[i] = false
+        this.dislikeCheck[i] = false
+      }
     })
 
     this.id = this.route.snapshot.paramMap.get('id')
@@ -90,6 +100,33 @@ export class ProductDetailsComponent implements OnInit {
     //console.log(this.reviewFormData.value)
     this.dataService.addReviewData(this.reviewFormData.value, this.id)
     this.reviewFormData.reset();
+  }
+
+  like(event: any, index: any) {
+    if (event.source._checked == true && this.dislikeCheck[index] == false ) {
+      this.islike[index] += 1
+      this.likeCheck[index] = true
+      // console.log(this.islike[index])
+    }
+    else if (index >= 0 && event.source._checked == false && this.dislikeCheck[index] == false) {
+      this.islike[index] -= 1
+      this.likeCheck[index] = false 
+      // console.log(this.islike[index])
+    }
+  }
+
+  dislike(event: any, index: any) {
+    // console.log(event.source._checked)
+    if (event.source._checked == true  && this.likeCheck[index] == false ) {
+      this.isdislike[index] += 1
+      this.dislikeCheck[index] = true
+      // console.log(this.dislikeCheck)
+    }
+    else if (index >= 0 && event.source._checked == false && this.likeCheck[index] == false) {
+      this.isdislike[index] -= 1
+      this.dislikeCheck[index] = false
+      // console.log(this.dislikeCheck)
+    }
   }
 
 }
