@@ -109,7 +109,10 @@ export class ProductDetailsComponent implements OnInit {
       // console.log(this.islike[index])
     }
     else if (index >= 0 && event.source._checked == false && this.dislikeCheck[index] == false) {
+      if(this.islike[index] != 0)
+      {
       this.islike[index] -= 1
+      }
       this.likeCheck[index] = false 
       // console.log(this.islike[index])
     }
@@ -123,7 +126,10 @@ export class ProductDetailsComponent implements OnInit {
       // console.log(this.dislikeCheck)
     }
     else if (index >= 0 && event.source._checked == false && this.likeCheck[index] == false) {
-      this.isdislike[index] -= 1
+      if(this.isdislike[index] != 0)
+      {
+        this.isdislike[index] -= 1
+      }
       this.dislikeCheck[index] = false
       // console.log(this.dislikeCheck)
     }

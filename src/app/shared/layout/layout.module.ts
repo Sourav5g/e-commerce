@@ -9,6 +9,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+} from 'angularx-social-login';
+
 
 @NgModule({
   declarations: [
@@ -25,12 +30,31 @@ import {MatRadioModule} from '@angular/material/radio';
     FormsModule,
     ReactiveFormsModule,
     MatRadioModule,
+    SocialLoginModule
 
+  ],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '792879207451-hhu7hg2u75hn4vi16j28nljeutd0loi1.apps.googleusercontent.com'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }
   ],
   exports:[ 
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    SliderComponent],
+    SliderComponent
+  ],
+  
 })
 export class LayoutModule { }
